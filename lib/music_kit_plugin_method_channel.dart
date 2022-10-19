@@ -14,4 +14,14 @@ class MethodChannelMusicKitPlugin extends MusicKitPluginPlatform {
     final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
+
+  @override
+  Future<String?> requestPermission() async {
+    return await methodChannel.invokeMethod("requestPermission");
+  }
+
+  @override
+  Future<String?> getUserToken(String deviceToken) async {
+    return await methodChannel.invokeMethod("getUserToken", deviceToken);
+  }
 }

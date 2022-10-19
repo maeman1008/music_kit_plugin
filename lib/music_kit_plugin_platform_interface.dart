@@ -24,6 +24,15 @@ abstract class MusicKitPluginPlatform extends PlatformInterface {
   }
 
   Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
+    throw UnimplementedError('aaaaaa');
   }
+
+  Future<String?> requestPermission() {
+    throw UnimplementedError('');
+  }
+
+  Future<String?> getUserToken(String deviceToken) {
+    throw UnimplementedError('');
+  }
+
 }
