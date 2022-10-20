@@ -1,6 +1,7 @@
 import Flutter
 import UIKit
 import StoreKit
+import MusicKit
 
 enum AuthorizationError: String {
     case restricted = "RESTRECTED"
@@ -11,6 +12,7 @@ enum AuthorizationError: String {
 enum Method: String {
     case requestPermission
     case getUserToken
+    case getDefaultDeveloperToken
 }
 
 public class SwiftMusicKitPlugin: NSObject, FlutterPlugin {
@@ -28,10 +30,24 @@ public class SwiftMusicKitPlugin: NSObject, FlutterPlugin {
       switch method {
       case .requestPermission:
           requestAuthorization(result: result)
+      case .getDefaultDeveloperToken:
+          getDefaultDeveloperToken(result: result)
       case .getUserToken:
           getUserToken(developerToken: call.arguments as! String, result: result)
       }
   }
+    
+    public func getDefaultDeveloperToken(result: @escaping FlutterResult) {
+        Task {
+          do {
+            let token = try await DefaultMusicTokenProvider().developerToken(options: MusicTokenRequestOptions.ignoreCache)
+            result(token)
+          } catch {
+            result(nil)
+          }
+        }
+
+    }
     
     public func requestAuthorization(result: @escaping FlutterResult) {
         SKCloudServiceController.requestAuthorization() { status in

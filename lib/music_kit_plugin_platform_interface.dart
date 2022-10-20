@@ -24,7 +24,7 @@ abstract class MusicKitPluginPlatform extends PlatformInterface {
   }
 
   Future<String?> getPlatformVersion() {
-    throw UnimplementedError('aaaaaa');
+    throw UnimplementedError('');
   }
 
   Future<String?> requestPermission() {
@@ -32,6 +32,10 @@ abstract class MusicKitPluginPlatform extends PlatformInterface {
   }
 
   Future<String?> getUserToken(String deviceToken) {
+    throw UnimplementedError('');
+  }
+
+  Future<String?> getDefaultDeveloperToken() async {
     throw UnimplementedError('');
   }
 

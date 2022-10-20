@@ -24,4 +24,9 @@ class MethodChannelMusicKitPlugin extends MusicKitPluginPlatform {
   Future<String?> getUserToken(String deviceToken) async {
     return await methodChannel.invokeMethod("getUserToken", deviceToken);
   }
+
+  @override
+  Future<String?> getDefaultDeveloperToken() async {
+    return await methodChannel.invokeMethod("getDefaultDeveloperToken");
+  }
 }

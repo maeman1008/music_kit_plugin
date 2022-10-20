@@ -13,4 +13,8 @@ class MusicKitPlugin {
   Future<String?> getUserToken(String deviceToken) {
     return MusicKitPluginPlatform.instance.getUserToken(deviceToken);
   }
+
+  Future<String?> getDefaultDeveloperToken() async {
+    return MusicKitPluginPlatform.instance.getDefaultDeveloperToken();
+  }
 }

@@ -28,6 +28,8 @@ class _MyAppState extends State<MyApp> {
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
     String platformVersion;
+    final developerToken = await _musicKitPlugin.getDefaultDeveloperToken();
+    print(developerToken);
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     // If the widget was removed from the tree while the asynchronous platform
